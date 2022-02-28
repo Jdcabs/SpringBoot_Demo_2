@@ -6,7 +6,9 @@ import com.spring.tutorial.entity.Department;
 import com.spring.tutorial.repository.DepartmentRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DepartmentServiceImpl implements DepartmentService {
 
     @Autowired
@@ -20,5 +22,15 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public Department getDepartmentById(Long departmentId) {
         return repository.findById(departmentId).get();
+    }
+
+    @Override
+    public Department createDepartment(Department department) {
+        return repository.save(department);
+    }
+
+    @Override
+    public void deleteDepartment(Long departmentId) {
+        repository.deleteById(departmentId);
     }
 }

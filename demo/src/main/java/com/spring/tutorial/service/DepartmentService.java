@@ -9,4 +9,8 @@ public interface DepartmentService {
     public List<Department> getAll();
 
     public Department getDepartmentById(Long departmentId);
+
+    public Department createDepartment(Department department);
+
+    public void deleteDepartment(Long departmentId);
 }
