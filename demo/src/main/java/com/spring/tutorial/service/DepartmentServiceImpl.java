@@ -46,4 +46,11 @@ public class DepartmentServiceImpl implements DepartmentService {
             throw new RuntimeException("Id not Exsist!");
         }
     }
+
+    // Using Derived Query Methods
+
+    @Override
+    public List<Department> findByDepartmentName(String departmentName) {
+        return repository.findByDepartmentName(departmentName);
+    }
 }

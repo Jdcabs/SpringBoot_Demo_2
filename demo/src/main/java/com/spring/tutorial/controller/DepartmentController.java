@@ -47,4 +47,11 @@ public class DepartmentController {
     public Department updateDepartment(@PathVariable("id") Long id, @RequestBody Department department) {
         return departmentService.updateDepartment(id, department);
     }
+
+    // Using Derived Query Methods to fetch data.
+    @GetMapping("/department/name/{name}")
+    public List<Department> findByDepartmentName(@PathVariable("name") String departmentName){
+        return departmentService.findByDepartmentName(departmentName);
+    }
+
 }
