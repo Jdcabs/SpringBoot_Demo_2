@@ -1,10 +1,19 @@
 package com.spring.tutorial.service;
 
+import java.util.List;
+
+import com.spring.tutorial.entity.Department;
+import com.spring.tutorial.repository.DepartmentRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class DepartmentServiceImpl implements DepartmentService {
+
+    @Autowired
+    private DepartmentRepository repository;
     
     @Override
-    public void getAll() {
-        // TODO Auto-generated method stub
-        
+    public List<Department> getAll() {
+        return repository.findAll();
     }
 }
