@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,23 +23,28 @@ public class DepartmentController {
     private DepartmentService departmentService;
 
     @GetMapping("/department")
-    public List<Department> getAllDepartment(){
+    public List<Department> getAllDepartment() {
         return departmentService.getAll();
     }
 
     @GetMapping("/department/{id}")
-    public Department getDepartmentById(@PathVariable(value = "id") Long departmentId){
+    public Department getDepartmentById(@PathVariable(value = "id") Long departmentId) {
         return departmentService.getDepartmentById(departmentId);
     }
 
     @PostMapping("/department")
-    public Department createDepartment(@RequestBody Department department){
+    public Department createDepartment(@RequestBody Department department) {
         return departmentService.createDepartment(department);
     }
 
     @DeleteMapping("/department/{id}")
-    public String deleteDepartment(@PathVariable("id") Long departmentId){
+    public String deleteDepartment(@PathVariable("id") Long departmentId) {
         departmentService.deleteDepartment(departmentId);
         return "Successfully Deleted Department with an Id of " + departmentId ;
+    }
+
+    @PutMapping("/department/{id}")
+    public Department updateDepartment(@PathVariable("id") Long id, @RequestBody Department department) {
+        return departmentService.updateDepartment(id, department);
     }
 }
