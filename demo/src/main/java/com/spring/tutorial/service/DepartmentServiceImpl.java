@@ -48,9 +48,13 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     // Using Derived Query Methods
-
     @Override
     public List<Department> findByDepartmentName(String departmentName) {
         return repository.findByDepartmentName(departmentName);
+    }
+
+    @Override
+    public List<Department> findByDepartmentNameIgnoreCase(String departmentName) {
+        return repository.findByDepartmentNameIgnoreCase(departmentName);
     }
 }

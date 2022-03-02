@@ -11,6 +11,8 @@ import org.springframework.stereotype.Repository;
 public interface DepartmentRepository extends JpaRepository<Department, Long> {
     
     // Derived Query Methods.
-
     List<Department> findByDepartmentName(String name);
+
+    List<Department> findByDepartmentNameIgnoreCase(String departmentName);
+
 }
