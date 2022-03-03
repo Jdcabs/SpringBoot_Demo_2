@@ -2,8 +2,10 @@ package com.spring.tutorial.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
 import javax.websocket.server.PathParam;
 
+import com.spring.tutorial.Exception.DepartmentIdNotFound;
 import com.spring.tutorial.entity.Department;
 import com.spring.tutorial.service.DepartmentService;
 
@@ -28,12 +30,12 @@ public class DepartmentController {
     }
 
     @GetMapping("/department/{id}")
-    public Department getDepartmentById(@PathVariable(value = "id") Long departmentId) {
+    public Department getDepartmentById(@PathVariable(value = "id") Long departmentId) throws DepartmentIdNotFound{
         return departmentService.getDepartmentById(departmentId);
     }
 
     @PostMapping("/department")
-    public Department createDepartment(@RequestBody Department department) {
+    public Department createDepartment(@Valid @RequestBody Department department) {
         return departmentService.createDepartment(department);
     }
 

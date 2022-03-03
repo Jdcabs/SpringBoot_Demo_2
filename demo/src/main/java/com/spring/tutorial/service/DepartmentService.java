@@ -2,13 +2,14 @@ package com.spring.tutorial.service;
 
 import java.util.List;
 
+import com.spring.tutorial.Exception.DepartmentIdNotFound;
 import com.spring.tutorial.entity.Department;
 
 public interface DepartmentService {
     
     public List<Department> getAll();
 
-    public Department getDepartmentById(Long departmentId);
+    public Department getDepartmentById(Long departmentId) throws DepartmentIdNotFound;
 
     public Department createDepartment(Department department);
 
