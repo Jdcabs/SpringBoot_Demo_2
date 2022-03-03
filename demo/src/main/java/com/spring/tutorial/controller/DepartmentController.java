@@ -6,6 +6,7 @@ import javax.validation.Valid;
 import javax.websocket.server.PathParam;
 
 import com.spring.tutorial.Exception.DepartmentIdNotFound;
+import com.spring.tutorial.Exception.DepartmentNotFound;
 import com.spring.tutorial.entity.Department;
 import com.spring.tutorial.service.DepartmentService;
 
@@ -25,7 +26,7 @@ public class DepartmentController {
     private DepartmentService departmentService;
 
     @GetMapping("/department")
-    public List<Department> getAllDepartment() {
+    public List<Department> getAllDepartment() throws DepartmentNotFound{
         return departmentService.getAll();
     }
 

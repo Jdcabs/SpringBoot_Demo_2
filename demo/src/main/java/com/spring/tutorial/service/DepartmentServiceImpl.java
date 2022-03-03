@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.spring.tutorial.Exception.DepartmentIdNotFound;
+import com.spring.tutorial.Exception.DepartmentNotFound;
 import com.spring.tutorial.entity.Department;
 import com.spring.tutorial.repository.DepartmentRepository;
 
@@ -17,8 +18,13 @@ public class DepartmentServiceImpl implements DepartmentService {
     private DepartmentRepository repository;
     
     @Override
-    public List<Department> getAll() {
-        return repository.findAll();
+    public List<Department> getAll() throws DepartmentNotFound{
+        List<Department> department = repository.findAll();
+        
+        if(department.isEmpty()) {
+            throw new DepartmentNotFound("Can't Find Any Department, You can Add or try to check the http format, Thankyou ");
+        }
+        return department;
     }
 
     @Override
@@ -26,7 +32,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         Optional<Department> dOptional = repository.findById(departmentId);
 
         if(!dOptional.isPresent()){
-            throw new DepartmentIdNotFound("Department is not yet Available!");
+            throw new DepartmentIdNotFound("Department with an id of " + departmentId + " is not Available!");
         }else {
             return dOptional.get();
         }

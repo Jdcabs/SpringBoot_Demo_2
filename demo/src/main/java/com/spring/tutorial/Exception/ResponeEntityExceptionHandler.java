@@ -21,4 +21,12 @@ public class ResponeEntityExceptionHandler extends ResponseEntityExceptionHandle
 
         return ResponseEntity.status(errorMessages.getHttpStatus()).body(errorMessages);
     }
+
+    @ExceptionHandler(DepartmentNotFound.class)
+    public ResponseEntity<ErrorMessages> departmentNotFound(DepartmentNotFound departmentNotFound, WebRequest webRequest) {
+
+        ErrorMessages errorMessages = new ErrorMessages(HttpStatus.OK, departmentNotFound.getMessage());
+
+        return ResponseEntity.status(errorMessages.getHttpStatus()).body(errorMessages);
+    }
 }
