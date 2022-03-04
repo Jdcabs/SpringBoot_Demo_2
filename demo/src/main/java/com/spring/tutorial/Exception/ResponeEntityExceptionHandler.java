@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ResponseStatus
 public class ResponeEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
+    // If the ID is not Available or not found.
     @ExceptionHandler(DepartmentIdNotFound.class)
     public ResponseEntity<ErrorMessages> DepartmentIdNotFound(DepartmentIdNotFound departmentIdNotFound, WebRequest webRequest) {
 
@@ -22,6 +23,7 @@ public class ResponeEntityExceptionHandler extends ResponseEntityExceptionHandle
         return ResponseEntity.status(errorMessages.getHttpStatus()).body(errorMessages);
     }
 
+    // IF the Department is Empty or do not have a single data.
     @ExceptionHandler(DepartmentNotFound.class)
     public ResponseEntity<ErrorMessages> departmentNotFound(DepartmentNotFound departmentNotFound, WebRequest webRequest) {
 

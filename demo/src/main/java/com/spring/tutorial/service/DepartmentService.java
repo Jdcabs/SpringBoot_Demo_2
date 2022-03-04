@@ -20,5 +20,5 @@ public interface DepartmentService {
 
     public List<Department> findByDepartmentName(String departmentName);
     
-    public List<Department> findByDepartmentNameIgnoreCase(String departmentName);
+    public Department findByDepartmentNameIgnoreCase(String departmentName);
 }

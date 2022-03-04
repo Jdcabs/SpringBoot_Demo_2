@@ -58,7 +58,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/department/name/ignorecase/{name}")
-    public List<Department> findByDepartmentNameIgnoreCase(@PathVariable("name") String departmentName) {
+    public Department findByDepartmentNameIgnoreCase(@PathVariable("name") String departmentName) {
         return departmentService.findByDepartmentNameIgnoreCase(departmentName);
     }
 }
