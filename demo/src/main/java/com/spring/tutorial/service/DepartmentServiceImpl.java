@@ -22,7 +22,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         List<Department> department = repository.findAll();
         
         if(department.isEmpty()) {
-            throw new DepartmentNotFound("Can't Find Any Department, You can Add or try to check the http format, Thankyou ");
+            throw new DepartmentNotFound("Can't Find Any Department, You can Add or try to check the http format, Thank you ");
         }
         return department;
     }
@@ -31,7 +31,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     public Department getDepartmentById(Long departmentId) throws DepartmentIdNotFound {
         Optional<Department> dOptional = repository.findById(departmentId);
 
-        if(!dOptional.isPresent()){
+        if(dOptional.isEmpty()){
             throw new DepartmentIdNotFound("Department with an id of " + departmentId + " is not Available!");
         }else {
             return dOptional.get();
