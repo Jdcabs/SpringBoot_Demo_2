@@ -61,4 +61,5 @@ public class DepartmentController {
     public Department findByDepartmentNameIgnoreCase(@PathVariable("name") String departmentName) {
         return departmentService.findByDepartmentNameIgnoreCase(departmentName);
     }
+
 }

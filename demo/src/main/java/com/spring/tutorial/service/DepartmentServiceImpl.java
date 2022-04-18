@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DepartmentServiceImpl implements DepartmentService {
+public class DepartmentServiceImpl implements DepartmentService,CRUD {
 
     @Autowired
     private DepartmentRepository repository;
@@ -69,5 +69,10 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public Department findByDepartmentNameIgnoreCase(String departmentName) {
         return repository.findByDepartmentNameIgnoreCase(departmentName);
+    }
+
+    @Override
+    public List<Department> getAllDepartment() {
+        return null;
     }
 }
